@@ -27,10 +27,10 @@ public class Word {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getcontent() {
+	public String getContent() {
 		return content;
 	}
-	public void setcontent(String content) {
+	public void setContent(String content) {
 		this.content = content;
 	}
 
