@@ -1,4 +1,4 @@
-package com.example.admin;
+package com.langames.admin;
 
 import jakarta.persistence.*;
 
