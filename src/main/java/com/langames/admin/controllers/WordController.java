@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/words")
@@ -32,5 +34,20 @@ public class WordController {
 		
 		Word updatedWord = WordRepository.save(_word);
 		return ResponseEntity.ok(updatedWord);
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Long> deleteWord(@PathVariable Long id) {
+
+		Optional<Word> optionalWord = WordRepository.findById(id);
+
+		if (optionalWord.isPresent()) {
+			Word wordToDelete = optionalWord.get();
+			WordRepository.deleteById(id);
+			return ResponseEntity.ok(id);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+		
 	}
 }
