@@ -96,6 +96,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete one word",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/words/1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"words",
+								"1000"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
