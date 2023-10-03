@@ -3,11 +3,13 @@ package com.langames.admin.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.langames.admin.entities.Word.WordDAO;
 import com.langames.admin.entities.Word.WordModel;
 import com.langames.admin.repositories.WordRepository;
 
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +20,15 @@ public class WordController {
     private WordRepository WordRepository;
 
     @GetMapping
-    public List<WordModel> getAllWords() {
-        return WordRepository.findAllByOrderByIdAsc();
+    public List<WordDAO> getAllWords() {
+		List<WordModel> wordModel = WordRepository.findAllByOrderByIdAsc();
+		List<WordDAO> wordDao = new ArrayList<>();
+
+		for (WordModel wm : wordModel) {
+			wordDao.add(wm.toDao());
+		}
+
+        return wordDao;
     }
 
     @PostMapping
