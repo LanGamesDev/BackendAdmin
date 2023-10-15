@@ -1,5 +1,10 @@
 package com.langames.admin.entities.Word;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.langames.admin.entities.Translate.TranslateDAO;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -32,6 +37,19 @@ public class WordModel {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public WordDAO toDao(){
+
+		List<TranslateDAO> translates = new ArrayList<>();
+
+		WordDAO word = new WordDAO(
+			this.id,
+			this.content,
+			translates
+		);
+
+		return word;
 	}
 
 }
