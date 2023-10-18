@@ -17,6 +17,9 @@ public class WordModel {
 	@Column(name = "content")
 	private String content;
 
+	@OneToMany(mappedBy = "word", cascade = CascadeType.ALL)
+    private List<TranslateDAO> translates;
+
 	public WordModel() {
 		
 	}
