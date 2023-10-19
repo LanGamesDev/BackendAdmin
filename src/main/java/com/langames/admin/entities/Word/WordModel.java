@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.langames.admin.entities.Translate.TranslateDAO;
+import com.langames.admin.entities.Translate.TranslateModel;
 
 import jakarta.persistence.*;
 
@@ -18,7 +19,7 @@ public class WordModel {
 	private String content;
 
 	@OneToMany(mappedBy = "word", cascade = CascadeType.ALL)
-    private List<TranslateDAO> translates;
+    private List<TranslateModel> translates;
 
 	public WordModel() {
 		
@@ -41,15 +42,24 @@ public class WordModel {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public List<TranslateModel> getTranslates() {
+		return translates;
+	}
+	public void setTranslates(List<TranslateModel> translates) {
+		this.translates = translates;
+	}
 
 	public WordDAO toDao(){
 
-		List<TranslateDAO> translates = new ArrayList<>();
+		List<TranslateDAO> translatesDao = new ArrayList<>();
+		for (TranslateModel translateModel : translates) {
+			translatesDao.add(translateModel.toDao());
+		}
 
 		WordDAO word = new WordDAO(
 			this.id,
 			this.content,
-			translates
+			translatesDao
 		);
 
 		return word;
