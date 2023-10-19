@@ -21,4 +21,13 @@ public class WordDAO {
 		this.translates = translates;
 	}
 
+	public WordModel toModel(){
+
+		WordModel word = new WordModel(
+			this.content
+		);
+
+		return word;
+	}
+
 }
