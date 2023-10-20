@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\": \"test1\"\r\n}",
+							"raw": "{\r\n    \"content\": \"test1_tra\",\r\n    \"translates\": [\r\n        {\r\n            \"content\": \"translate1\"\r\n        },\r\n        {\r\n            \"content\": \"translate2\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -103,7 +103,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/words/1000",
+							"raw": "http://localhost:8080/words/35",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -111,7 +111,7 @@
 							"port": "8080",
 							"path": [
 								"words",
-								"1000"
+								"35"
 							]
 						}
 					},
