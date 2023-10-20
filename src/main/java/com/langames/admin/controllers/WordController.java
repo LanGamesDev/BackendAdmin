@@ -3,13 +3,14 @@ package com.langames.admin.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.langames.admin.entities.Word.WordDAO;
-import com.langames.admin.entities.Word.WordModel;
+import com.langames.admin.entities.Translate.*;
+import com.langames.admin.entities.Word.*;
 import com.langames.admin.repositories.WordRepository;
 
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +33,20 @@ public class WordController {
     }
 
     @PostMapping
-	public WordModel createWord(@RequestBody WordModel word) {
-		return WordRepository.save(word);
+	public ResponseEntity<WordDAO> createWord(@RequestBody WordDAO word) {
+		WordModel modelWord = word.toModel();
+		List<TranslateModel> translates = new ArrayList<>();
+
+		for (TranslateDAO translateDao : word.translates) {
+			TranslateModel modelTranslate = translateDao.toModel();
+			modelTranslate.setWord(modelWord);
+			modelTranslate.setFechaCreacion(new Date());
+			translates.add(modelTranslate);
+		}
+
+		modelWord.setTranslates(translates);
+		modelWord = WordRepository.save(modelWord);
+		return ResponseEntity.ok(modelWord.toDao());
 	}
 
     @PutMapping("/{id}")
