@@ -9,6 +9,7 @@ public class WordDAO {
 	public long id;
 	public String content;
     public List<TranslateDAO> translates;
+    public List<TranslateDAO> deletedTranslates;
 
 	public WordDAO() {
 		

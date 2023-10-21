@@ -52,7 +52,7 @@ public class WordModel {
 	public WordDAO toDao(){
 
 		List<TranslateDAO> translatesDao = new ArrayList<>();
-		for (TranslateModel translateModel : translates) {
+		for (TranslateModel translateModel : this.translates) {
 			translatesDao.add(translateModel.toDao());
 		}
 
