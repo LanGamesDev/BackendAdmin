@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.langames.admin.entities.Translate.*;
 import com.langames.admin.entities.Word.*;
+import com.langames.admin.repositories.TranslateRepository;
 import com.langames.admin.repositories.WordRepository;
 
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,8 @@ import java.util.Optional;
 public class WordController {
     @Autowired
     private WordRepository WordRepository;
+	@Autowired
+    private TranslateRepository TranslateRepository;
 
     @GetMapping
     public List<WordDAO> getAllWords() {
@@ -50,14 +53,32 @@ public class WordController {
 	}
 
     @PutMapping("/{id}")
-	public ResponseEntity<WordModel> updateWord(@PathVariable Long id, @RequestBody WordModel wordDetails){
+	public ResponseEntity<WordDAO> updateWord(@PathVariable Long id, @RequestBody WordDAO wordDetails){
+		WordModel modelWord = wordDetails.toModel();
 		WordModel _word = WordRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Word not exist with id :" + id));
-		
-		_word.setContent(wordDetails.getContent());
+
+		List<TranslateModel> translates = new ArrayList<>();
+
+		for (TranslateDAO translateDao : wordDetails.translates) {
+			System.out.println(translateDao.printModel());
+			TranslateModel modelTranslate = translateDao.toModel();
+			modelTranslate.setWord(_word);
+			modelTranslate.setFechaCreacion(new Date());
+			System.out.println(modelTranslate.printModel());
+			
+			translates.add(modelTranslate);
+		}
+		_word.setContent(modelWord.getContent());
+		_word.setTranslates(translates);
 		
 		WordModel updatedWord = WordRepository.save(_word);
-		return ResponseEntity.ok(updatedWord);
+
+		for (TranslateDAO translateDao : wordDetails.deletedTranslates) {
+			TranslateRepository.deleteById(translateDao.id);
+		}
+
+		return ResponseEntity.ok(updatedWord.toDao());
 	}
 
 	@DeleteMapping("/{id}")
