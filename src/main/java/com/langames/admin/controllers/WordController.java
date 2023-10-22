@@ -41,6 +41,7 @@ public class WordController {
 		List<TranslateModel> translates = new ArrayList<>();
 
 		for (TranslateDAO translateDao : word.translates) {
+			System.out.println(translateDao.printDAO());
 			TranslateModel modelTranslate = translateDao.toModel();
 			modelTranslate.setWord(modelWord);
 			modelTranslate.setFechaCreacion(new Date());
@@ -61,7 +62,7 @@ public class WordController {
 		List<TranslateModel> translates = new ArrayList<>();
 
 		for (TranslateDAO translateDao : wordDetails.translates) {
-			System.out.println(translateDao.printModel());
+			System.out.println(translateDao.printDAO());
 			TranslateModel modelTranslate = translateDao.toModel();
 			modelTranslate.setWord(_word);
 			modelTranslate.setFechaCreacion(new Date());
