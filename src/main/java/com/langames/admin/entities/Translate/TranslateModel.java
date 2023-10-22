@@ -19,13 +19,14 @@ public class TranslateModel {
 	@Column(name = "content")
 	private String content;
 
-    @Column(name = "audi_fechaCreacion")
+    @Column(name = "audi_fechacreacion")
 	private Date fechaCreacion;
 
 	public TranslateModel() {}
 	
-	public TranslateModel(String content, WordModel word, Date fechaCreacion) {
+	public TranslateModel(long id, String content, WordModel word, Date fechaCreacion) {
 		super();
+		this.id = id;
 		this.content = content;
 		this.word = word;
 		this.fechaCreacion = fechaCreacion;
@@ -54,6 +55,22 @@ public class TranslateModel {
 	}
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
+	}
+
+	public TranslateDAO toDao(){
+
+		TranslateDAO translate = new TranslateDAO(
+			this.id,
+			this.content,
+			this.fechaCreacion
+		);
+
+		return translate;
+	}
+
+	public String printModel()
+	{ 
+		return (this.content + ", " + this.id + ", " + this.word.getId());
 	}
 
 }
