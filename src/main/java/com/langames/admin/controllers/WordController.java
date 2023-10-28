@@ -25,7 +25,7 @@ public class WordController {
 
     @GetMapping
     public List<WordDAO> getAllWords() {
-		List<WordModel> wordModel = WordRepository.findAllByOrderByIdAsc();
+		List<WordModel> wordModel = WordRepository.findAllByOrderByIdDesc();
 		List<WordDAO> wordDao = new ArrayList<>();
 
 		for (WordModel wm : wordModel) {

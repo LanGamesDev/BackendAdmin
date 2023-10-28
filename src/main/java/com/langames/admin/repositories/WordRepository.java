@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface WordRepository extends JpaRepository<WordModel, Long> {
     public List<WordModel> findAllByOrderByIdAsc();
+    public List<WordModel> findAllByOrderByIdDesc();
 }
