@@ -116,6 +116,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Words For Game",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/words/getWordsForGame",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"words",
+								"getWordsForGame"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
