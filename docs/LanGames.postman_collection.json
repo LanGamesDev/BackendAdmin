@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\": \"test1_tra\",\r\n    \"translates\": [\r\n        {\r\n            \"content\": \"translate1\"\r\n        },\r\n        {\r\n            \"content\": \"translate2\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"id\": 0,\r\n    \"content\": \"test\",\r\n    \"translates\": [\r\n        {\r\n            \"id\": 1,\r\n            \"content\": \"test\",\r\n            \"typeState\": 0,\r\n            \"modified\": false\r\n        }\r\n    ],\r\n    \"deletedTranslates\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -75,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\": \"test2\"\r\n}",
+							"raw": "{\r\n    \"id\": 45,\r\n    \"content\": \"test1_traedit\",\r\n    \"translates\": [\r\n        {\r\n            \"id\": 20,\r\n            \"content\": \"123\",\r\n            \"fechaCreacion\": \"2023-10-20T05:00:00.000+00:00\",\r\n            \"typeState\": 1,\r\n            \"modified\": false\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"content\": \"asdfasdf\",\r\n            \"fechaCreacion\": \"2023-10-20T05:00:00.000+00:00\",\r\n            \"typeState\": 1,\r\n            \"modified\": false\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"content\": \"QQQQQ\",\r\n            \"fechaCreacion\": \"2023-10-20T05:00:00.000+00:00\",\r\n            \"typeState\": 1,\r\n            \"modified\": false\r\n        },\r\n        {\r\n            \"id\": 17,\r\n            \"content\": \"as\",\r\n            \"fechaCreacion\": \"2023-10-20T05:00:00.000+00:00\",\r\n            \"typeState\": 1,\r\n            \"modified\": false\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"content\": \"test\",\r\n            \"fechaCreacion\": \"2023-10-20T05:00:00.000+00:00\",\r\n            \"typeState\": 1,\r\n            \"modified\": false\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"content\": \"22222\",\r\n            \"typeState\": 0,\r\n            \"modified\": false\r\n        }\r\n    ],\r\n    \"deletedTranslates\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -83,7 +83,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/words/1",
+							"raw": "http://localhost:8080/words/45",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -91,7 +91,7 @@
 							"port": "8080",
 							"path": [
 								"words",
-								"1"
+								"45"
 							]
 						}
 					},
