@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/words")
@@ -95,4 +96,20 @@ public class WordController {
 		}
 		
 	}
+
+	@GetMapping("/getWordsForGame")
+    public List<WordDAO> getWordsForGame() {
+		List<WordModel> wordModel = WordRepository.findAllByOrderByIdDesc();
+		Collections.shuffle(wordModel);
+		int quantityWords = 10;
+		List<WordDAO> wordDao = new ArrayList<>();
+
+		for (WordModel wm : wordModel) {
+			if(wordDao.size() < quantityWords && wm.getTranslates().size() > 0){
+				wordDao.add(wm.toDao());
+			}
+		}
+
+        return wordDao;
+    }
 }
