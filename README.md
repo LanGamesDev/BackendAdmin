@@ -15,3 +15,4 @@ List of requirements
 |002|TypeCRUDImplementation|X|X|X|-||
 |003|NewFieldTranslateWord|X|X|X|-||
 |004|FirstGameExactTranslate|X|X|X|-|004_FirstGameExactTranslate|
+|005|FixFrontIssues|X|||-|005_FixFrontIssues|
