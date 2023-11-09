@@ -9,8 +9,9 @@ Run `./gradlew bootRun` to build the project.
 
 List of requirements
 
-|CODE|DESCRIPTION|FRONT|BACK|BD |MOBILE|
-|----|-----------|:---:|:--:|:-:|:----:|
-|001|WordCRUDImplementation|X|X|X|-|
-|002|TypeCRUDImplementation|X|X|X|-|
-|003|NewFieldTranslateWord|X|X|X|-|
+|CODE|DESCRIPTION|FRONT|BACK|BD |MOBILE|BRANCH|
+|----|-----------|:---:|:--:|:-:|:----:|:----:|
+|001|WordCRUDImplementation|X|X|X|-||
+|002|TypeCRUDImplementation|X|X|X|-||
+|003|NewFieldTranslateWord|X|X|X|-||
+|004|FirstGameExactTranslate|X|X|X|-|004_FirstGameExactTranslate|
