@@ -11,7 +11,6 @@ import com.langames.admin.repositories.WordRepository;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Collections;
@@ -45,7 +44,6 @@ public class WordController {
 			System.out.println(translateDao.printDAO());
 			TranslateModel modelTranslate = translateDao.toModel();
 			modelTranslate.setWord(modelWord);
-			modelTranslate.setFechaCreacion(new Date());
 			translates.add(modelTranslate);
 		}
 
@@ -66,7 +64,6 @@ public class WordController {
 			System.out.println(translateDao.printDAO());
 			TranslateModel modelTranslate = translateDao.toModel();
 			modelTranslate.setWord(_word);
-			modelTranslate.setFechaCreacion(new Date());
 			System.out.println(modelTranslate.printModel());
 			
 			translates.add(modelTranslate);
