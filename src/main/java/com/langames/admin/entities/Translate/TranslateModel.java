@@ -1,5 +1,9 @@
 package com.langames.admin.entities.Translate;
-import java.util.Date;
+import java.time.Instant;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.langames.admin.entities.Word.WordModel;
 
@@ -19,17 +23,19 @@ public class TranslateModel {
 	@Column(name = "content")
 	private String content;
 
-    @Column(name = "audi_fechacreacion")
-	private Date fechaCreacion;
+    @CreationTimestamp(source = SourceType.DB)
+	private Instant createdOn;
+	
+	@UpdateTimestamp(source = SourceType.DB)
+	private Instant lastUpdatedOn;
 
 	public TranslateModel() {}
 	
-	public TranslateModel(long id, String content, WordModel word, Date fechaCreacion) {
+	public TranslateModel(long id, String content, WordModel word) {
 		super();
 		this.id = id;
 		this.content = content;
 		this.word = word;
-		this.fechaCreacion = fechaCreacion;
 	}
 
 	public long getId() {
@@ -50,19 +56,14 @@ public class TranslateModel {
 	public void setContent(String content) {
 		this.content = content;
 	}
-    public Date getFechaCreacion() {
-		return fechaCreacion;
-	}
-	public void setFechaCreacion(Date fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
 
 	public TranslateDAO toDao(){
 
 		TranslateDAO translate = new TranslateDAO(
 			this.id,
 			this.content,
-			this.fechaCreacion
+			this.createdOn,
+			this.lastUpdatedOn
 		);
 
 		return translate;
