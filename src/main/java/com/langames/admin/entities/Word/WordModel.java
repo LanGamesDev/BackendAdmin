@@ -1,7 +1,12 @@
 package com.langames.admin.entities.Word;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.langames.admin.entities.Translate.TranslateDAO;
 import com.langames.admin.entities.Translate.TranslateModel;
@@ -17,6 +22,12 @@ public class WordModel {
 	
 	@Column(name = "content")
 	private String content;
+
+	@CreationTimestamp(source = SourceType.DB)
+	private Instant createdOn;
+	
+	@UpdateTimestamp(source = SourceType.DB)
+	private Instant lastUpdatedOn;
 
 	@OneToMany(mappedBy = "word", cascade = CascadeType.ALL)
     private List<TranslateModel> translates;
@@ -42,6 +53,7 @@ public class WordModel {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public List<TranslateModel> getTranslates() {
 		return translates;
 	}
@@ -59,6 +71,8 @@ public class WordModel {
 		WordDAO word = new WordDAO(
 			this.id,
 			this.content,
+			this.createdOn,
+			this.lastUpdatedOn,
 			translatesDao
 		);
 
