@@ -11,6 +11,7 @@ public class WordDAO {
 	public String content;
 	public Instant createdDate;
 	public Instant updatedDate;
+	public String context;
     public List<TranslateDAO> translates;
     public List<TranslateDAO> deletedTranslates;
 
@@ -18,19 +19,21 @@ public class WordDAO {
 		
 	}
 	
-	public WordDAO(long id, String content, Instant createdDate, Instant updatedDate, List<TranslateDAO> translates) {
+	public WordDAO(long id, String content, Instant createdDate, Instant updatedDate, String context, List<TranslateDAO> translates) {
 		super();
         this.id = id;
 		this.content = content;
 		this.translates = translates;
 		this.createdDate = createdDate;
 		this.updatedDate = updatedDate;
+		this.context = context;
 	}
 
 	public WordModel toModel(){
 
 		WordModel word = new WordModel(
-			this.content
+			this.content,
+			this.context
 		);
 
 		return word;
