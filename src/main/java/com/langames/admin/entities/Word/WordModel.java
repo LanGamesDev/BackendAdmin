@@ -32,13 +32,17 @@ public class WordModel {
 	@OneToMany(mappedBy = "word", cascade = CascadeType.ALL)
     private List<TranslateModel> translates;
 
+	@Column(name = "context")
+	private String context;
+
 	public WordModel() {
 		
 	}
 	
-	public WordModel(String content) {
+	public WordModel(String content, String context) {
 		super();
 		this.content = content;
+		this.context = context;
 	}
 
 	public long getId() {
@@ -52,6 +56,12 @@ public class WordModel {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getContext() {
+		return context;
+	}
+	public void setContext(String context) {
+		this.context = context;
 	}
 
 	public List<TranslateModel> getTranslates() {
@@ -73,6 +83,7 @@ public class WordModel {
 			this.content,
 			this.createdOn,
 			this.lastUpdatedOn,
+			this.context,
 			translatesDao
 		);
 
