@@ -1,21 +1,23 @@
 package com.langames.admin.entities.Translate;
 
-import java.util.Date;
+import java.time.Instant;
 
 public class TranslateDAO {
 
     public long id;
 	public String content;
-	public Date fechaCreacion;
 	public int typeState;
+	public Instant createdDate;
+	public Instant updatedDate;
 
 	public TranslateDAO() {}
 
-	public TranslateDAO(long id, String content, Date fechaCreacion) {
+	public TranslateDAO(long id, String content, Instant createdDate, Instant updatedDate) {
 		super();
 		this.id = id;
 		this.content = content;
-		this.fechaCreacion = fechaCreacion;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
 	}
 
 	public TranslateModel toModel(){
@@ -25,8 +27,7 @@ public class TranslateDAO {
 		TranslateModel word = new TranslateModel(
 			newId,
 			this.content,
-			null,
-			this.fechaCreacion
+			null
 		);
 
 		return word;
@@ -34,7 +35,7 @@ public class TranslateDAO {
 
 	public String printDAO()
 	{ 
-		return (this.content + ", " + this.id + ", " + this.fechaCreacion + ", " + this.typeState);
+		return (this.content + ", " + this.id + ", " + this.createdDate + ", " + this.typeState);
 	}
 
 }
