@@ -61,14 +61,13 @@ public class WordController {
 		List<TranslateModel> translates = new ArrayList<>();
 
 		for (TranslateDAO translateDao : wordDetails.translates) {
-			System.out.println(translateDao.printDAO());
 			TranslateModel modelTranslate = translateDao.toModel();
 			modelTranslate.setWord(_word);
-			System.out.println(modelTranslate.printModel());
 			
 			translates.add(modelTranslate);
 		}
 		_word.setContent(modelWord.getContent());
+		_word.setContext(modelWord.getContext());
 		_word.setTranslates(translates);
 		
 		WordModel updatedWord = WordRepository.save(_word);
